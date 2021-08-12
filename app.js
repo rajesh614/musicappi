@@ -18,76 +18,76 @@ app.get('/',(req,res) => {
     res.send("Health Ok");
 });
 
-//city Route
-app.get('/artist',(req,res) => {
-    db.collection('Artist').find().toArray((err,result) => {
-      if(err) throw err;
-      res.send(result)
-    })
-  })
+// //city Route
+// app.get('/artist',(req,res) => {
+//     db.collection('Artist').find().toArray((err,result) => {
+//       if(err) throw err;
+//       res.send(result)
+//     })
+//   })
 
- /* //movie details
-app.get('/hall/:id',(req,res) =>{
-  var id = req.params.id
-  db.collection('Hall').find({_id:id}).toArray((err,result) => {
-    if(err) throw err;
-    res.send(result)
-  })
-})
+//  //movie details
+// app.get('/hall/:id',(req,res) =>{
+//   var id = req.params.id
+//   db.collection('Hall').find({_id:id}).toArray((err,result) => {
+//     if(err) throw err;
+//     res.send(result)
+//   })
+// })
 
- //movies details
- app.get('/movies/:id',(req,res) =>{
-  var id = req.params.id
+//  //movies details
+//  app.get('/movies/:id',(req,res) =>{
+//   var id = req.params.id
 
-  db.collection('movietype').find({_id:id}).toArray((err,result) => {
-    if(err) throw err;
-    res.send(result)
-  })
-})
+//   db.collection('movietype').find({_id:id}).toArray((err,result) => {
+//     if(err) throw err;
+//     res.send(result)
+//   })
+// })
 
-//city Route
-app.get('/hall',(req,res) => {
-  var condition ={};
-   //movie +city
-  if(req.query.movie && req.query.city){
-    condition={$and:[{"Movie.movie":req.query.movie},{city:req.query.city}]}
-  }
-   //movietype
-  else if(req.query.movie){
-    condition={"Movie.movie":req.query.movie}
-  }
-  //city
-  else if(req.query.city){
-    condition={city:req.query.city}
-  }
-  db.collection('Hall').find(condition).toArray((err,result) => {
-    if(err) throw err;
-    res.send(result)
-  })
-})
+// //city Route
+// app.get('/hall',(req,res) => {
+//   var condition ={};
+//    //movie +city
+//   if(req.query.movie && req.query.city){
+//     condition={$and:[{"Movie.movie":req.query.movie},{city:req.query.city}]}
+//   }
+//    //movietype
+//   else if(req.query.movie){
+//     condition={"Movie.movie":req.query.movie}
+//   }
+//   //city
+//   else if(req.query.city){
+//     condition={city:req.query.city}
+//   }
+//   db.collection('Hall').find(condition).toArray((err,result) => {
+//     if(err) throw err;
+//     res.send(result)
+//   })
+// })
 
-app.get('/movies',(req,res) => {
-  db.collection('movietype').find().toArray((err,result) => {
-    if(err) throw err;
-    res.send(result)
-  })
-})
+// app.get('/movies',(req,res) => {
+//   db.collection('movietype').find().toArray((err,result) => {
+//     if(err) throw err;
+//     res.send(result)
+//   })
+// })
 
 //placeorder
-app.post('/book',(req,res)=>{
-  db.collection('booking').insert(req.body,(err,result) => {
+app.post('/keep',(req,res)=>{
+  db.collection('surveylist').insert(req.body,(err,result) => {
     if(err) throw err;
     res.send('data added');
   })
 })
 
 //get all bookings
-app.get('/bookings',(req,res) => {
-  db.collection('booking').find({}).toArray((err,result) => {
+app.get('/lists',(req,res) => {
+  db.collection('surveylist').find({}).toArray((err,result) => {
     if(err) throw err;
     res.send(result)
   })
-})*/
+})
 
 //connection with mongo serer
 MongoClient.connect(mongourl,(err,connection) => {

@@ -92,7 +92,7 @@ app.get('/lists',(req,res) => {
 //connection with mongo serer
 MongoClient.connect(mongourl,(err,connection) => {
     if(err) console.log(err);
-    db = connection.db('MUSIC');
+    db = connection.db('JANUARY');
   
     app.listen(port,(err) => {
       if(err) throw err;
